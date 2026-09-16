@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>영어술사 - 상위 1% 검증된 원어민 1:1 화상영어</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #5c3be8;
+      --primary-dark: #4322c4;
+      --secondary: #8b5cf6;
+      --dark: #0f172a;
+      --text: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Pretendard', sans-serif;
+      scroll-behavior: smooth;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      -webkit-tap-highlight-color: transparent; /* 아이폰 터치 시 하이라이트 제거 */
+    }
+
+    body {
+      color: var(--text);
+      background-color: #ffffff;
+      line-height: 1.5;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .btn-nav {
+      background: var(--primary);
+      color: white !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      transition: transform 0.2s, background 0.3s !important;
+      cursor: pointer;
+    }
+
+    .btn-nav:hover {
+      background: var(--primary-dark) !important;
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 8rem 5% 4rem;
+      text-align: center;
+      background: linear-gradient(180deg, #f5f3ff 0%, #ffffff 100%);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background: #e0e7ff;
+      color: var(--primary);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      white-space: nowrap;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 1.2rem;
+      line-height: 1.3;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #64748b;
+      margin-bottom: 2rem;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: white;
+      background: var(--primary);
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(92, 59, 232, 0.3);
+      white-space: nowrap;
+      transition: transform 0.3s, background 0.3s;
+      cursor: pointer;
+    }
+
+    .cta-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+    }
+
+    /* Section Common */
+    .section {
+      padding: 4rem 5%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title h2 {
+      font-size: 1.8rem;
+      color: var(--dark);
+      font-weight: 800;
+    }
+
+    .section-title p {
+      color: #64748b;
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    /* Points Grid */
+    .points-section {
+      background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+      color: white;
+      border-radius: 24px;
+      margin: 0 4% 4rem;
+      padding: 3.5rem 4%;
+    }
+
+    .points-section .section-title h2 {
+      color: white;
+    }
+
+    .points-section .section-title p {
+      color: #e0e7ff;
+    }
+
+    .points-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* 아이폰 터치 호환을 위한 cursor: pointer 필수 지정 */
+    .point-card-btn {
+      background: #f3e8ff;
+      border-radius: 18px;
+      padding: 1.8rem 1rem 1.2rem;
+      text-align: center;
+      position: relative;
+      color: var(--dark);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      cursor: pointer; /* 아이폰 클릭 인식 해결 */
+      transition: transform 0.2s;
+    }
+
+    .point-card-btn.white-bg {
+      background: #ffffff;
+    }
+
+    .point-card-btn:hover {
+      transform: translateY(-4px);
+    }
+
+    .click-hint {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 600;
+      white-space: nowrap;
+      pointer-events: none; /* 클릭 이벤트 방해하지 않도록 설정 */
+    }
+
+    .point-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.25rem 0.8rem;
+      border-radius: 20px;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .point-icon {
+      font-size: 2.5rem;
+      margin: 0.5rem 0 0.3rem;
+      pointer-events: none;
+    }
+
+    .point-title {
+      font-size: 1rem;
+      font-weight: 800;
+      line-height: 1.35;
+      pointer-events: none;
+    }
+
+    /* Modal Styling - iOS 최적화 */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      cursor: pointer; /* 닫기 용이하게 처리 */
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-box {
+      position: relative;
+      background: #fff;
+      border-radius: 16px;
+      max-width: 95%;
+      max-height: 85vh;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      cursor: default;
+    }
+
+    .modal-box img {
+      display: block;
+      max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+      background: rgba(255,255,255,0.9);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+
+    /* Curriculum Grid */
+    .curriculum-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+
+    .curriculum-card {
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 1.2rem 0.8rem;
+      text-align: center;
+      border: 1px solid #e2e8f0;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .curriculum-card .eng-title {
+      font-size: 0.75rem;
+      color: #818cf8;
+      font-weight: 600;
+      display: block;
+      white-space: nowrap;
+    }
+
+    .curriculum-card .kor-title {
+      font-size: 1.1rem;
+      color: var(--dark);
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      white-space: nowrap;
+    }
+
+    .curriculum-card .icon-area {
+      font-size: 2.2rem;
+    }
+
+    /* Apply Section Box */
+    .apply-box {
+      max-width: 700px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 2.5rem 1.2rem;
+      border-radius: 20px;
+      text-align: center;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    }
+
+    .apply-box h3 {
+      font-size: 1.5rem;
+      color: var(--dark);
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+    }
+
+    .apply-box p {
+      color: #64748b;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: #94a3b8;
+      padding: 3rem 5% 2rem;
+      text-align: center;
+    }
+
+    /* Mobile Responsive Optimizations */
+    @media (max-width: 768px) {
+      .hero {
+        padding-top: 7rem;
+      }
+      .hero h1 { 
+        font-size: 1.75rem; 
+      }
+      .hero p {
+        font-size: 0.95rem;
+      }
+      .badge {
+        font-size: 0.75rem;
+      }
+      .cta-btn {
+        padding: 0.9rem 1.6rem;
+        font-size: 0.95rem;
+      }
+      .points-grid {
+        grid-template-columns: 1fr;
+      }
+      .points-section {
+        margin: 0 3% 3rem;
+        padding: 2.5rem 4%;
+      }
+      nav a { display: none; }
+      nav a.btn-nav { display: inline-block; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">영어술사</div>
+    <nav>
+      <a href="#points">핵심포인트</a>
+      <a href="#curriculum">커리큘럼</a>
+      <a href="https://naver.me/5r9nrpoT" target="_blank" class="btn-nav">무료 수업 신청</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <span class="badge">TOP 1% 검증된 원어민 1:1 화상영어</span>
+    <h1>마법처럼 입이 트이는<br>맞춤형 화상영어 '영어술사'</h1>
+    <p>체계적인 검증 센터 시스템과 맞춤 커리큘럼으로 회화 실력을 완성합니다.</p>
+    <a href="https://naver.me/5r9nrpoT" target="_blank" class="cta-btn">상담 및 무료 체험 신청하기</a>
+  </section>
+
+  <!-- Points Section -->
+  <section class="points-section" id="points">
+    <div class="section-title">
+      <h2>영어술사만의 핵심 포인트</h2>
+      <p>카드를 클릭하시면 상세 이미지를 확인하실 수 있습니다.</p>
+    </div>
+
+    <div class="points-grid">
+      <!-- Point 01 (NVEC 센터 클릭) -->
+      <div class="point-card-btn" id="btn-nvec">
+        <div class="point-badge">POINT 01</div>
+        <div class="point-icon">🏫</div>
+        <div class="point-title">필리핀 현지 교육센터, NVEC</div>
+        <span class="click-hint">🔍 클릭해서 센터 위치 확인하기</span>
+      </div>
+
+      <!-- Point 02 (강사진 클릭) -->
+      <div class="point-card-btn white-bg" id="btn-teacher">
+        <div class="point-badge">POINT 02</div>
+        <div class="point-icon">💻</div>
+        <div class="point-title">강사진 비교 및 선택</div>
+        <span class="click-hint">🔍 클릭해서 강사진 프로필 확인하기</span>
+      </div>
+
+      <!-- Point 03 (수업 모니터링) -->
+      <div class="point-card-btn" id="btn-monitor">
+        <div class="point-badge">POINT 03</div>
+        <div class="point-icon">📊</div>
+        <div class="point-title">수업 모니터링 및 강사 만족도 평가</div>
+        <span class="click-hint">🔍 클릭해서 상세 내용 확인하기</span>
+      </div>
+
+      <!-- Point 04 (지속적인 후속 교육) -->
+      <div class="point-card-btn white-bg" id="btn-education">
+        <div class="point-badge">POINT 04</div>
+        <div class="point-icon">🎧</div>
+        <div class="point-title">지속적인 후속 교육</div>
+        <span class="click-hint">🔍 클릭해서 상세 내용 확인하기</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Curriculum Section -->
+  <section class="section" id="curriculum">
+    <div class="section-title">
+      <h2>체계적인 커리큘럼</h2>
+      <p>목적과 수준에 맞춰 선택할 수 있는 10가지 과정</p>
+    </div>
+    
+    <div class="curriculum-grid">
+      <div class="curriculum-card">
+        <span class="eng-title">Curriculum</span>
+        <div class="kor-title">정규과정</div>
+        <div class="icon-area">🎓</div>
+      </div>
+      <div class="curriculum-card">
+        <span class="eng-title">Conversation</span>
+        <div class="kor-title">회화</div>
+        <div class="icon-area">💬</div>
+      </div>
+      <div class="curriculum-card">
+        <span class="eng-title">Business</span>
+        <div class="kor-title">비즈니스</div>
+        <div class="icon-area">💻</div>
+      </div>
+      <div class="curriculum-card">
+        <span class="eng-title">Exam Prep</span>
+        <div class="kor-title">시험준비</div>
+        <div class="icon-area">📋</div>
+      </div>
+      <div class="curriculum-card">
+        <span class="eng-title">Debate</span>
+        <div class="kor-title">토론</div>
+        <div class="icon-area">🎙️</div>
+      </div>
+      <div class="curriculum-card">
+        <span class="eng-title">Current Affairs & History</span>
+        <div class="kor-title">시사 & 역사</div>
+        <div class="icon-area">🏛️</div>
+      </div>
+      <div class="curriculum-card">
+        <span class="eng-title">Grammar</span>
+        <div class="kor-title">문법</div>
+        <div class="icon-area">📖</div>
+      </div>
+      <div class="curriculum-card">
+        <span class="eng-title">Voca</span>
+        <div class="kor-title">어휘</div>
+        <div class="icon-area">🏷️</div>
+      </div>
+      <div class="curriculum-card">
+        <span class="eng-title">Travel</span>
+        <div class="kor-title">여행</div>
+        <div class="icon-area">✈️</div>
+      </div>
+      <div class="curriculum-card">
+        <span class="eng-title">Writing</span>
+        <div class="kor-title">쓰기</div>
+        <div class="icon-area">📝</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Apply Section -->
+  <section class="section" style="background: #f8fafc;" id="apply">
+    <div class="apply-box">
+      <h3>무료 체험 및 상담 신청</h3>
+      <p>네이버 폼을 통해 간단히 연락처를 남겨주시면 매니저가 연락드립니다.</p>
+      <a href="https://naver.me/5r9nrpoT" target="_blank" class="cta-btn">네이버 폼으로 신청서 작성하기</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="logo" style="margin-bottom: 0.8rem; color: #818cf8;">영어술사</div>
+    <p style="font-size: 0.9rem;">상위 1% 검증된 원어민 1:1 화상영어 서비스</p>
+    <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.6;">&copy; 2026 영어술사. All rights reserved.</p>
+  </footer>
+
+  <!-- Modal 1: NVEC -->
+  <div id="modal-nvec" class="modal">
+    <div class="modal-box">
+      <span class="close-btn" id="close-nvec">&times;</span>
+      <img src="https://i.imgur.com/yigNaro.png" alt="NVEC 센터 지도">
+    </div>
+  </div>
+
+  <!-- Modal 2: 강사진 -->
+  <div id="modal-teacher" class="modal">
+    <div class="modal-box">
+      <span class="close-btn" id="close-teacher">&times;</span>
+      <img src="https://i.imgur.com/70UxFBs.png" alt="영어술사 강사진">
+    </div>
+  </div>
+
+  <!-- Modal 3: 수업 모니터링 -->
+  <div id="modal-monitor" class="modal">
+    <div class="modal-box">
+      <span class="close-btn" id="close-monitor">&times;</span>
+      <img src="https://i.imgur.com/RikO9OR.png" alt="수업 모니터링 및 강사 만족도 평가">
+    </div>
+  </div>
+
+  <!-- Modal 4: 지속적인 후속 교육 -->
+  <div id="modal-education" class="modal">
+    <div class="modal-box">
+      <span class="close-btn" id="close-education">&times;</span>
+      <img src="https://i.imgur.com/wkeRdSD.png" alt="지속적인 후속 교육">
+    </div>
+  </div>
+
+  <!-- iOS 대응 JavaScript -->
+  <script>
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+      }
+    }
+
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // 아이폰 Safari 터치 바인딩 호환 처리
+    document.addEventListener('DOMContentLoaded', function() {
+      // Point 01 버튼 이벤트
+      const btnNvec = document.getElementById('btn-nvec');
+      if (btnNvec) {
+        btnNvec.addEventListener('click', function(e) {
+          e.preventDefault();
+          openModal('modal-nvec');
+        });
+      }
+
+      // Point 02 버튼 이벤트
+      const btnTeacher = document.getElementById('btn-teacher');
+      if (btnTeacher) {
+        btnTeacher.addEventListener('click', function(e) {
+          e.preventDefault();
+          openModal('modal-teacher');
+        });
+      }
+
+      // Point 03 버튼 이벤트
+      const btnMonitor = document.getElementById('btn-monitor');
+      if (btnMonitor) {
+        btnMonitor.addEventListener('click', function(e) {
+          e.preventDefault();
+          openModal('modal-monitor');
+        });
+      }
+
+      // Point 04 버튼 이벤트
+      const btnEducation = document.getElementById('btn-education');
+      if (btnEducation) {
+        btnEducation.addEventListener('click', function(e) {
+          e.preventDefault();
+          openModal('modal-education');
+        });
+      }
+
+      // 모달 바깥 영역 및 닫기 버튼 클릭시 닫기 처리
+      const modalIds = ['nvec', 'teacher', 'monitor', 'education'];
+      modalIds.forEach(function(key) {
+        const modal = document.getElementById('modal-' + key);
+        if (modal) {
+          modal.addEventListener('click', function(e) {
+            if (e.target === this || e.target.id === 'close-' + key) {
+              closeModal('modal-' + key);
+            }
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
